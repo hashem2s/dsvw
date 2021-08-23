@@ -1,0 +1,61 @@
+1- Enable the below IPS Rules and enable Packet capture
+- 1000552 - Generic Cross Site Scripting(XSS) Prevention
+- 1000608 - Generic SQL Injection Prevention
+- 1005933 - Identified Directory Traversal Sequence In Uri Query Parameter
+
+2- Make Sure that Pyhton 3 is installed by runing this command : python --version
+
+if pyhton3 is NOT installed 
+use these commands:
+yum update -y
+yum install -y python3
+
+to Verify installation run this command: python3
+
+3- run this command to downlaod TEST Application
+
+wget https://github.com/stamparm/DSVW.git
+moify the dsvw.py LINE 9 to run on ip address 0.0.0.0 : 8080
+
+4- run this command to trun on the service
+sudo python3 ./dsvw.py
+
+it should show
+
+[i] running HTTP server at 'http://0.0.0.0:8080'...
+
+
+5- Do these below tests 
+
+
+a-Blind SQL Injection (boolean)
+b- Blind SQL Injection (time) - vulnerable|exploit|info
+c- UNION SQL Injection 
+
+Login bypass - FAILED
+
+
+d- XSS Reflected
+
+e- Frame Injection (phishing)
+f- HTTP Header Injection (phishing) 
+g- Click Jacking
+
+
+
+
+path traversal failed
+Arbitrary Code Execution failed
+
+
+
+
+
+http://192.168.40.131:8080/?domain=www.google.com%3B%20ifconfig
+
+
+http://192.168.40.131:8080/?size=9999999
+it worked == failed
+
+Login by pass
+http://192.168.40.131:8080/login?username=admin&password=%27%20OR%20%271%27%20LIKE%20%271
